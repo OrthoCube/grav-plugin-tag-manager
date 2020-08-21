@@ -1,0 +1,26 @@
+en:
+  PLUGIN_TAG_MANAGER:
+    TAG_MANAGER: Tag Manager
+    TAG_DELETED: Tag deleted.
+    RENAMED: '"%s" was renamed to "%s".'
+    DELETE_TAG: Delete tag
+    RENAME_TAG: Rename tag
+    TAXONOMY_TYPE: Taxonomy type
+    TAG_TO_DELETE: Tag to delete
+    TAG_TO_RENAME: Current name
+    NEW_TAG_NAME: New name
+    DELETE: Delete
+    RENAME: Rename
+ja:
+  PLUGIN_TAG_MANAGER:
+    TAG_MANAGER: タグ管理ツール
+    TAG_DELETED: 削除されました。
+    RENAMED: '「%s」は「%s」に変更されました。'
+    DELETE_TAG: タグの削除
+    RENAME_TAG: タグの名前の変更
+    TAXONOMY_TYPE: タクソノミータイプ
+    TAG_TO_DELETE: 削除するタグ
+    TAG_TO_RENAME: 現在の名前
+    NEW_TAG_NAME: 新しい名前
+    DELETE: 削除する
+    RENAME: 名前を変更する

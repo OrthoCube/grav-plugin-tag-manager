@@ -1,0 +1,110 @@
+{% extends 'partials/base.html.twig' %}
+{% set mode = 'types' %}
+
+{% if admin.route %}
+    {% set context = admin.page(true) %}
+{% endif %}
+
+{% block titlebar %}
+    <h1><i class="fa fa-fw fa-tags"></i> {{ "PLUGIN_TAG_MANAGER.TAG_MANAGER"|tu }}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if grav.twig.done %}
+        <div id="messages" class="top-notifications-container default-box-shadow">
+            <div class="single-notification info alert hidden" data-gpm-grav=""></div>
+            <div class="info alert">
+                {% if grav.twig.done['action'] == 'delete' %}
+                    {{ "PLUGIN_TAG_MANAGER.TAG_DELETED"|tu(grav.twig.done['target']) }}
+                {% elseif grav.twig.done['action'] == 'rename' %}
+                    {{ "PLUGIN_TAG_MANAGER.RENAMED"|tu(grav.twig.done['from'], grav.twig.done['to']) }}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    
+    <div class="page-data">
+        <div class="gpm gpm-themes">
+            <h1>
+                {{ "PLUGIN_TAG_MANAGER.TAG_MANAGER"|tu }}
+            </h1>
+            <div class="gpm gpm-themes themes pure-g">
+                <h2>{{ "PLUGIN_TAG_MANAGER.DELETE_TAG"|tu }}</h2>
+                <form method="POST">
+                    <div class="form-field grid">
+                        <div class="form-label block size-1-3">
+                            <label for="delete-tax">{{ "PLUGIN_TAG_MANAGER.TAXONOMY_TYPE"|tu }}</label>
+                        </div>
+                        <div class="form-data block size-2-3">
+                            <div class="form-select-wrapper">
+                                <select name="tax" class="form-select" id="delete-tax">
+                                    {% for tax in grav.twig.taxonomies %}
+                                        <option value="{{ tax }}">{{ tax }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-field grid">
+                        <div class="form-label block size-1-3">
+                            <label for="delete-tag">{{ "PLUGIN_TAG_MANAGER.TAG_TO_DELETE"|tu }}</label>
+                        </div>
+                        <div class="form-data block size-2-3">
+                            <div class="form-input-wrapper">
+                                <input type="text" id="delete-tag" name="tag" placeholder="{{ "PLUGIN_TAG_MANAGER.TAG_TO_DELETE"|tu }}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="action" value="delete">
+                    <div class="form-field">
+                        <input type="submit" class="button" value="{{ "PLUGIN_TAG_MANAGER.DELETE"|tu }}">
+                    </div>
+                </form>
+
+                <h2>{{ "PLUGIN_TAG_MANAGER.RENAME_TAG"|tu }}</h2>
+                <form method="POST">
+                    <div class="form-field grid">
+                        <div class="form-label block size-1-3">
+                            <label for="rename-tax">{{ "PLUGIN_TAG_MANAGER.TAXONOMY_TYPE"|tu }}</label>
+                        </div>
+                        <div class="form-data block size-2-3">
+                            <div class="form-select-wrapper">
+                                <select name="tax" class="form-select" id="rename-tax">
+                                    {% for tax in grav.twig.taxonomies %}
+                                        <option value="{{ tax }}">{{ tax }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>                      
+                    <div class="form-field grid">
+                        <div class="form-label block size-1-3">
+                            <label for="rename-old">{{ "PLUGIN_TAG_MANAGER.TAG_TO_RENAME"|tu }}</label>
+                        </div>
+                        <div class="form-data block size-2-3">
+                            <div class="form-input-wrapper">
+                                <input type="text" name="from" id="rename-old" placeholder="{{ "PLUGIN_TAG_MANAGER.TAG_TO_RENAME"|tu }}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-field grid">
+                        <div class="form-label block size-1-3">
+                            <label for="rename-new">{{ "PLUGIN_TAG_MANAGER.NEW_TAG_NAME"|tu }}</label>
+                        </div>
+                        <div class="form-data block size-2-3">
+                            <div class="form-input-wrapper">
+                                <input type="text" name="to" id="rename-new" placeholder="{{ "PLUGIN_TAG_MANAGER.NEW_TAG_NAME"|tu }}" required>
+                            </div>
+                        </div>
+                    </div>                    
+                    <input type="hidden" name="action" value="rename">
+                    <div class="form-field">
+                        <input type="submit" class="button" value="{{ "PLUGIN_TAG_MANAGER.RENAME"|tu }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if grav.twig.data %}{{ grav.twig.data }}{% endif %}
+{% endblock %}
