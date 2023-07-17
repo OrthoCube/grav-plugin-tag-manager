@@ -39,11 +39,13 @@ class TagManagerPlugin extends Plugin
     *is
     * @return ClassLoader
     */
+    /*
+    */
     public function autoload(): ClassLoader
     {
         return require __DIR__ . '/vendor/autoload.php';
     }
-
+    
     /**
      * Initialize the plugin
      */
