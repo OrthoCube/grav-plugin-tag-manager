@@ -13,7 +13,8 @@
     }
   ],
   "require": {
-    "php": ">=7.1.3"
+    "php": ">=7.1.3",
+    "aura/autoload": "^2.0"
   },
   "autoload": {
     "psr-4": {

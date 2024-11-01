@@ -1,7 +1,7 @@
 name: Tag Manager
 slug: tag-manager
 type: plugin
-version: 1.0
+version: 1.1
 description: Renames and deletes tags
 icon: plug
 author:
